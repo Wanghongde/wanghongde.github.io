@@ -7,7 +7,7 @@
 
     
 
-    <title>王洪德的技术博客</title>
+    <title>归档: 2023/3 | 王洪德的技术博客</title>
     <meta name="author" content="John Doe" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -70,8 +70,6 @@
 
         
         
-        
-        
 
         
         <div class="author-meta">
@@ -112,28 +110,54 @@
 
         <div id="content" class="content">
             <div id="wrapper" class="wrapper" style="max-width: 800px">
-                <article class="article" itemscope itemprop="blogPost">
+                
+
+
     
-    <section class="article-body markdown-body">
+    
+    
+    
+    
+    <section class="archives-wrap">
+    <div class="archive-year-wrap">
+    <a href="/archives/2023/03" class="page-hd">
+        2023/03
+    </a>
+    </div>
+    <ol class="archives">
+    
+
+    <li class="archive-section-item">
         
-        
-        
-    </section>
+<article class="archive-article archive-type-post">
+    <div class="archive-article-inner">
+        <header class="archive-article-header">
+            <a class="archive-article-link" href="/2023/03/01/CSS/01-Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+            <span class="archive-article-date">
+                (<a class="article-date" href="/archives/2023/03">
+    
+    <time class="vm" datetime="2023-03-01T02:51:30.431Z" itemprop="datePublished">3/1</time>
+</a>
+)
+            </span>
+        </header>
+    </div>
 </article>
+    </li>
 
 
+</ol></section>
+
+
+
+<nav class="page-nav">
+    <a class="extend prev" rel="prev" href="/archives/2023/03/">&laquo; 上一页</a><a class="page-number" href="/archives/2023/03/">1</a><span class="page-number current">2</span>
+</nav>
 
 
             </div>
         </div>
 
-        
-            
-            <a id="pagenext" href="/2023/03/03/%E7%BD%91%E7%BB%9C/03-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="article-next" title="前端性能优化"><i class="icon-arrow-right"></i></a>
-            
-            
-            <a id="pageprev" href="/2023/03/05/JS/04-%E6%89%8B%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/" class="article-prev" title="手写图片懒加载"><i class="icon-arrow-left"></i></a>
-            
         
 
         <footer class="footer">
@@ -197,33 +221,6 @@
         });
     });
     </script>
-    
-        
-<script src="/js/scrollspy.min.js"></script>
-
-        <script type="text/javascript">
-        $(document.body).scrollspy({target: '#aside-inner'});
-
-        $(window).on('resize', function() {
-            var hw = $('#header').width();
-            var ww = $('#wrapper').width();
-            var space = ($(this).width() - hw - ww) / 2 / 2;
-
-            var pageprev = $('#pageprev');
-            var pagenext = $('#pagenext');
-            var avg = (pageprev.width() + pagenext.width()) / 2
-
-            if(space > avg) {
-                var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
-            } else {
-                pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
-            }
-        }).trigger('resize');
-        </script>
     
 
 </body>

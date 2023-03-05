@@ -7,10 +7,10 @@
 
     
 
-    <title>王洪德的技术博客</title>
+    <title>手写图片懒加载 | 王洪德的技术博客</title>
     <meta name="author" content="John Doe" />
     <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="description" content="图片懒加载是我们再处理图片展示，从而提升页面性能的一个重要手段懒加载，也就是说不会页面一打开就立即请求并展示，而是等待一会再去展示，那么等待多久呢，设置个固定的时间肯定是不对的，但是却能够感受到懒1234567891011121314151617181920212223242526&amp;lt;style&amp;gt;    li &amp;#123;        list-style: none;        height: 300px;        border: 1px solid #ccc;     " />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 
@@ -52,7 +52,7 @@
 
     <nav id="nav-inner" class="nav-inner">
         
-            <a class="nav-item active" href="/">
+            <a class="nav-item" href="/">
                 <span class="nav-text">首页</span>
             </a>
         
@@ -68,6 +68,8 @@
     <div id="aside-inner" class="aside-inner">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://example.com"></form>
 
+        
+        
         
         
 
@@ -110,17 +112,16 @@
 
         <div id="content" class="content">
             <div id="wrapper" class="wrapper" style="max-width: 800px">
-                
-    <article class="article" itemscope itemprop="blogPost">
+                <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2023/03/05/JS/04-%E6%89%8B%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">手写图片懒加载</a>
+            手写图片懒加载
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
+            <a class="article-date" href="http://example.com/2023/03/05/JS/04-%E6%89%8B%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/index.html">
     
     <i class="icon-calendar vm"></i>
     
@@ -157,202 +158,16 @@
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <section class="article-body markdown-body">
-        
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/03/%E7%BD%91%E7%BB%9C/03-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-03T14:35:15.276Z" itemprop="datePublished">2023-03-03</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>性能优化是一个特别大的话题，我这里也只是简单说下我的理解</p>
-<p>与其说性能优化，不如换一个简单的话<code>访问的网站快准狠的呈现到用户面前</code></p>
-<p>我们这里聊的性能优化，其实只是总结梳理一些常见的方式，面对真实的项目肯定不能一点一点去尝试，比较通用的方案是全链路埋点，通过数据查看哪块慢了，通过数据去量化性能优化，当然我们这里就不去最小的粒度化去分析，因为那最少需要几万字来梳理了。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/03/%E7%BD%91%E7%BB%9C/03-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/03/JS/03-%E6%89%8B%E5%86%99%E7%80%91%E5%B8%83%E6%B5%81/">手写瀑布流</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-03T14:35:15.259Z" itemprop="datePublished">2023-03-03</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>瀑布流是我们经常用到的效果，它有一个特点就是<code>等宽不定高</code></p>
-<p>那我们如何实现一个这样的效果呢，我们一步一步来做一下</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/03/JS/03-%E6%89%8B%E5%86%99%E7%80%91%E5%B8%83%E6%B5%81/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/">浏览器是如何运作</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.496Z" itemprop="datePublished">2023-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>浏览器对于前端开发者，就好比赛车之于赛车手，我们只有足够了解浏览器，我们才能写出更好的代码、更好的用户体验。<br>大致可以将浏览器分为： </p>
-<ol>
-<li>用户界面：除标签页窗口之外的内容</li>
-<li>浏览器引擎：用于用户界面和渲染引擎之间传递数据<br>2.1 数据持久层：帮助浏览器存储数据比如cookie等等</li>
-<li>渲染引擎：渲染用户请求的页面内容<br>3.1  网络：负责发起请求<br>3.2  js解释器：负责js解析和执行
-        
-        <p class="article-more-link">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/">互联网是如何运作</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.490Z" itemprop="datePublished">2023-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="客户端和服务端通信"><a href="#客户端和服务端通信" class="headerlink" title="客户端和服务端通信"></a>客户端和服务端通信</h3><p>电脑连入互联网，电脑就会获得一个IP(internet  protocol address)地址。<br>服务器接入互联网，也会获得一个IP地址， 我们常说的访问这个网站，其实就是访问这个网站的服务器的IP地址。<br>假如你的电脑想访问服务器，那么这个时候电脑就是客户端，服务器就是服务端， 这种形式也就是客户端服务端模型。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-
-
-<nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-</nav>
-
 
 
             </div>
         </div>
 
+        
+            
+            <a id="pagenext" href="/2023/03/04/Vue/03-%E9%80%92%E5%BD%92%E7%BB%84%E4%BB%B6/" class="article-next" title=""><i class="icon-arrow-right"></i></a>
+            
+            
         
 
         <footer class="footer">
@@ -416,6 +231,33 @@
         });
     });
     </script>
+    
+        
+<script src="/js/scrollspy.min.js"></script>
+
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
     
 
 </body>
