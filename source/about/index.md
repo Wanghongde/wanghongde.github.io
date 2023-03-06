@@ -16,11 +16,10 @@ Gihtub: [https://github.com/Wanghongde](https://github.com/Wanghongde "https://g
 
 ## 工作
 ### 江苏传智播客教育科技股份有限公司
-前端教研组-导师
+前端教研组-讲师
   - 负责前端课程讲授
   - 书写完善课程大纲及课件
   - 辅助学生就业
-  - 热爱学习，有较强的沟通能力和善于分享
 
 ### 吉林省网开万物网络科技有限公司
 前端开发组-组员
@@ -28,3 +27,7 @@ Gihtub: [https://github.com/Wanghongde](https://github.com/Wanghongde "https://g
   - 项目的推进及维护
 
 ## 介绍
+
+- 讲原则，有自制力，热爱前端 
+- 有良好的沟通合作能力，善于沟通
+- 热爱生活，兴趣爱好广泛打球、喝茶、钓鱼、唱歌
