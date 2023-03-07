@@ -116,6 +116,40 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/03/06/Vue/04-Vue%E5%BC%80%E5%8F%91%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E9%80%82%E9%85%8D/">Vue开发移动端css适配</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-06T14:55:37.473Z" itemprop="datePublished">2023-03-06</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/03/05/JS/04-%E6%89%8B%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">手写图片懒加载</a>
         </h1>
         
@@ -141,17 +175,14 @@
         
         <p>图片懒加载是我们再处理图片展示，从而提升<code>页面性能</code>的一个重要手段</p>
 <p>懒加载，也就是说不会页面一打开就立即请求并展示，而是等待一会再去展示，那么等待多久呢，设置个固定的时间肯定是不对的，但是却能够感受到<code>懒</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">li</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">list-style</span>: none;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding</span>: <span class="number">50px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">data-src</span>=<span class="string">&quot;https://avatars.githubusercontent.com/u/20986264?v=4&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> img = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;img&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        img.<span class="property">src</span> = img.<span class="property">dataset</span>.<span class="property">src</span>  <span class="comment">// 3秒后图片src设置成真实的url</span></span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>我们发现个问题，如果用户始终不滚动页面，那图片用户是看不到的，那加载也是没有必要的，所以我们不应该设置固定</p>
-<p>我们可以这样，设置页面的<code>滚动事件</code>，监听<code>图片</code>是否要进入到页面的<code>可视窗口</code>，当滚动到将要出现图片的位置，则设置图片的<code>src</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> img = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">       </span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onscroll</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> imgTop = img.<span class="title function_">getBoundingClientRect</span>().<span class="property">top</span>  <span class="comment">// 图片上边框到可视窗口上边框的距离</span></span><br><span class="line">    <span class="keyword">let</span> viewHeight = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientHeight</span>  <span class="comment">// 可视窗口高度</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(imgTop &lt;= viewHeight) &#123;  <span class="comment">// 将要出现到可视区域</span></span><br><span class="line">        img.<span class="property">src</span> = img.<span class="property">dataset</span>.<span class="property">src</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们已经初步实现了，当图片要出现到可视窗口，再去加载。</p>
-<p>优化：这里应该加一个<code>节流</code>，当图片加载完成也应该<code>移除</code>滚动事件监听</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> img = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> flag = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> delayFn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(flag) <span class="built_in">clearTimeout</span>(flag)</span><br><span class="line"></span><br><span class="line">    flag = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">windowScrollFn</span>()</span><br><span class="line">        flag = <span class="literal">null</span></span><br><span class="line">    &#125;, <span class="number">200</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> windowScrollFn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> imgTop = img.<span class="title function_">getBoundingClientRect</span>().<span class="property">top</span></span><br><span class="line">    <span class="keyword">const</span> viewHeight = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientHeight</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">11</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(imgTop &lt;= viewHeight) &#123;</span><br><span class="line">        img.<span class="property">src</span> = img.<span class="property">dataset</span>.<span class="property">src</span></span><br><span class="line"></span><br><span class="line">        <span class="variable language_">window</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>, delayFn)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;scroll&#x27;</span>, delayFn)</span><br></pre></td></tr></table></figure>
-
-
+        
+        <p class="article-more-link">
+            <a href="/2023/03/05/JS/04-%E6%89%8B%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
@@ -159,9 +190,34 @@
 
     <article class="article" itemscope itemprop="blogPost">
     
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/04/Vue/03-%E9%80%92%E5%BD%92%E7%BB%84%E4%BB%B6/">递归组件</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-04T07:04:42.678Z" itemprop="datePublished">2023-03-04</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
     <section class="article-body markdown-body">
         
-        
+        <h3 id="多数据渲染"><a href="#多数据渲染" class="headerlink" title="多数据渲染"></a>多数据渲染</h3><p>当后台返给我们的数据</p>
+
         
     </section>
 </article>
@@ -290,48 +346,6 @@
         
         <p class="article-more-link">
             <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/">互联网是如何运作</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.490Z" itemprop="datePublished">2023-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="客户端和服务端通信"><a href="#客户端和服务端通信" class="headerlink" title="客户端和服务端通信"></a>客户端和服务端通信</h3><p>电脑连入互联网，电脑就会获得一个IP(internet  protocol address)地址。<br>服务器接入互联网，也会获得一个IP地址， 我们常说的访问这个网站，其实就是访问这个网站的服务器的IP地址。<br>假如你的电脑想访问服务器，那么这个时候电脑就是客户端，服务器就是服务端， 这种形式也就是客户端服务端模型。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
