@@ -116,6 +116,86 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/">手写 toy_vue (下)</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-09T06:53:30.150Z" itemprop="datePublished">2023-03-09</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>vue 是现在比较主流的基于<code>MVVM</code>的框架，当数据改变页面就更新，页面更新数据也相应改变。</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/09/JS/05-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8A)/">手写 toy_vue (上)</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-09T05:34:44.367Z" itemprop="datePublished">2023-03-09</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>vue 是现在比较主流的基于<code>MVVM</code>的框架，当数据改变页面就更新，页面更新数据也相应改变。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line">        &#123;&#123; title &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;info.address&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">let</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">el</span>: <span class="string">&#x27;app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">title</span>: <span class="string">&#x27;使用vue&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">info</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">address</span>: <span class="string">&#x27;石家庄&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么<code>vue</code> 是如何做到将data的数据渲染到页面，又是如何实现双向绑定呢，我们来一起做一下。</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/09/JS/05-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8A)/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/03/06/Vue/03-Vue%E5%BC%80%E5%8F%91%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E9%80%82%E9%85%8D/">Vue开发移动端css适配</a>
         </h1>
         
@@ -288,98 +368,10 @@
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/">浏览器是如何运作</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.496Z" itemprop="datePublished">2023-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>浏览器对于前端开发者，就好比赛车之于赛车手，我们只有足够了解浏览器，我们才能写出更好的代码、更好的用户体验。<br>大致可以将浏览器分为： </p>
-<ol>
-<li>用户界面：除标签页窗口之外的内容</li>
-<li>浏览器引擎：用于用户界面和渲染引擎之间传递数据<br>2.1 数据持久层：帮助浏览器存储数据比如cookie等等</li>
-<li>渲染引擎：渲染用户请求的页面内容<br>3.1  网络：负责发起请求<br>3.2  js解释器：负责js解析和执行
-        
-        <p class="article-more-link">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/">互联网是如何运作</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.490Z" itemprop="datePublished">2023-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="客户端和服务端通信"><a href="#客户端和服务端通信" class="headerlink" title="客户端和服务端通信"></a>客户端和服务端通信</h3><p>电脑连入互联网，电脑就会获得一个IP(internet  protocol address)地址。<br>服务器接入互联网，也会获得一个IP地址， 我们常说的访问这个网站，其实就是访问这个网站的服务器的IP地址。<br>假如你的电脑想访问服务器，那么这个时候电脑就是客户端，服务器就是服务端， 这种形式也就是客户端服务端模型。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/01/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
 
 
 <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
 </nav>
 
 
