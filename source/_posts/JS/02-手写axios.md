@@ -3,8 +3,6 @@ title: 手写 axios
 tags: JS
 ---
 
-### 手写axios
-
 `axios` 是当前比较流行的发请求的一个第三方库，`axios` 支持浏览器和node端，支持 promise语法，有丰富的配置项`拦截器`，那我们来一起边使用`axios`，边手动写一下`axios`的方法吧。
 
 <!-- more -->
@@ -67,7 +65,7 @@ myaxios({
 
 `myaxios` 已经能够直接调用发起请求了。
 
-那么方式二怎么解决呢，并且除了`get`,还有其他比如`post`、`delete`、等请求，我们可以把请求方法手机成一个数组，然后循环遍历依次创建请求就好。
+那么方式二怎么解决呢，并且除了`get`,还有其他比如`post`、`delete`等请求，我们可以把请求方法收集成一个数组，然后循环遍历依次创建请求就好。
 
 ```js
 let methodList = ['get', 'delete', 'head', 'options', 'put', 'post', 'patch']
