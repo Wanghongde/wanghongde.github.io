@@ -29,6 +29,8 @@ Watcher.prototype.update = function() {
 }
 ```
 
+<!--more-->
+
 当我们编译页面时，应该实例化一个Watcher,并将实例缓存到`list`列表中
 
 ```js
