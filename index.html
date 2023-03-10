@@ -116,6 +116,40 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/03/09/CSS/02-%E6%B5%85%E6%9E%90BFC/">浅析BFC</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-09T08:11:46.484Z" itemprop="datePublished">2023-03-09</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/CSS/" rel="tag">CSS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/">手写 toy_vue (下)</a>
         </h1>
         
@@ -141,27 +175,14 @@
         
         <p>我们已经可以将数据编译到页面上，但是数据改变不能影响页面的从新编译，所以要在数据修改时，也就是<code>setter</code>中，进行事件的发布，在<code>getter</code>时进行事件的监听。这里肯定需要用到<code>发布订阅</code>，所以先抛开其他，我们先实现一个<code>发布订阅</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Dep</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">list</span> = []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Dep</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">addSub</span> = <span class="keyword">function</span>(<span class="params">sub</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">list</span>.<span class="title function_">push</span>(sub)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Dep</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">notify</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">list</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">    sub.<span class="title function_">update</span>()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Watcher</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">fn</span> = fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Watcher</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">update</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">fn</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当我们编译页面时，应该实例化一个Watcher,并将实例缓存到<code>list</code>列表中</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Compile</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(node.<span class="property">nodeType</span> === <span class="number">3</span> &amp;&amp; reg.<span class="title function_">test</span>(node.<span class="property">textContent</span>)) &#123;</span><br><span class="line">        <span class="keyword">let</span> text = node.<span class="property">textContent</span>  <span class="comment">// 缓存一下最初的内容</span></span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line">     <span class="keyword">new</span> <span class="title class_">Watcher</span>(<span class="keyword">function</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">         node.<span class="property">textContent</span> = text.<span class="title function_">replace</span>(reg, newVal)  <span class="comment">// 这里要拿到修改后的新数据</span></span><br><span class="line">     &#125;)</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>这里需要注意，在调用watcher的函数时，需要传入新修改的值，所以这里要想办法让<code>update</code>里能计算出最新的值，所以在实例化的时候，要把计算前需要的数据传递到watcher实例下:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Compile</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(node.<span class="property">nodeType</span> === <span class="number">3</span> &amp;&amp; reg.<span class="title function_">test</span>(node.<span class="property">textContent</span>)) &#123;</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line">        </span><br><span class="line">     <span class="comment">// vm: vue实例 有所有的数据</span></span><br><span class="line">     <span class="comment">// RegExp.$1: 提取分组的数据的key  </span></span><br><span class="line">     <span class="keyword">new</span> <span class="title class_">Watcher</span>(vm, <span class="title class_">RegExp</span>.<span class="property">$1</span>,<span class="keyword">function</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">         node.<span class="property">textContent</span> = node.<span class="property">textContent</span>.<span class="title function_">replace</span>(reg, newVal)  <span class="comment">// 这里要拿到修改后的新数据</span></span><br><span class="line">     &#125;)</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>那我们还需要改造<code>Watcher</code>构造函数了，这样<code>update</code>就可以通过<code>this</code>访问到数据了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Watcher</span>(<span class="params">vm, expression, fn</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">vm</span> = vm</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">expression</span> = expression</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">fn</span> = fn</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里我们不仅仅需要处理字段，还应该将这一次的 <code>watcher实例</code> 存储到<code>list</code>缓存列表，这样之后修改数据，才能执行<code>watcher实例</code>的<code>update</code>函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Watcher</span>(<span class="params">vm, expression, fn</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">vm</span> = vm</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">expression</span> = expression</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">fn</span> = fn</span><br><span class="line"></span><br><span class="line">  <span class="title class_">Dep</span>.<span class="property">target</span> = <span class="variable language_">this</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> val = vm</span><br><span class="line">  expression.<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span> =&gt;</span> val[key])  <span class="comment">// 这里在读取数据所以回触发数据的getter</span></span><br><span class="line"></span><br><span class="line">  <span class="title class_">Dep</span>.<span class="property">target</span> = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由于我们在<code>val[key]</code>的时候会读取数据，所以会触发<code>getter</code>，那么就可以将 <code>Dep.target</code>,也就是<code>watcher实例</code> 存到<code>list</code>缓存列表,，在设置值的时候我们去触发<code>notify</code>，让缓存列表的<code>update</code>都执行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Observe</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> dep = <span class="keyword">new</span> <span class="title class_">Dep</span>()</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> data) &#123;</span><br><span class="line">    <span class="keyword">let</span> value = data[key]</span><br><span class="line">    <span class="title function_">observe</span>(value)</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(data, key, &#123;</span><br><span class="line">      <span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title class_">Dep</span>.<span class="property">target</span> &amp;&amp; dep.<span class="title function_">addSub</span>(<span class="title class_">Dep</span>.<span class="property">target</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(value === newVal) <span class="keyword">return</span> </span><br><span class="line"></span><br><span class="line">        value = newVal</span><br><span class="line"></span><br><span class="line">        <span class="title function_">observe</span>(newVal)</span><br><span class="line">        dep.<span class="title function_">notify</span>() </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>到这里，我们已经可以修改内容，并实现页面更新了，但是<code>v-model</code>我们还没处理，当<code>nodeType</code>是1,并且有<code>v-model</code>属性我们也需要进行数据的缓存，以响应数据，我们还需要注册<code>input</code>事件，监听输入内容，同步到<code>model</code>数据里。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Compile</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">if</span>(node.<span class="property">nodeType</span> === <span class="number">1</span>) &#123;</span><br><span class="line">       <span class="title class_">Array</span>.<span class="title function_">from</span>(node.<span class="property">attributes</span>).<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="keyword">if</span>(item.<span class="property">name</span> === <span class="string">&#x27;v-model&#x27;</span>) &#123;</span><br><span class="line">               <span class="keyword">let</span> arr = item.<span class="property">textContent</span>.<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">               <span class="keyword">let</span> val = vm</span><br><span class="line"></span><br><span class="line">               arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">key, index</span>) =&gt;</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span>(index === arr.<span class="property">length</span> - <span class="number">1</span>) &#123;</span><br><span class="line">                       <span class="keyword">new</span> <span class="title class_">Watcher</span>(vm, item.<span class="property">textContent</span>, <span class="keyword">function</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">                           node.<span class="property">value</span> = val[key]</span><br><span class="line">                       &#125;)</span><br><span class="line">                       <span class="keyword">return</span> node.<span class="property">value</span> = val[key]</span><br><span class="line">                   &#125;</span><br><span class="line">                   val = val[key]</span><br><span class="line">               &#125;)</span><br><span class="line"></span><br><span class="line">               node.<span class="title function_">addEventListener</span>(<span class="string">&#x27;input&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">                   <span class="keyword">let</span> val = vm</span><br><span class="line">                   arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">key, index</span>) =&gt;</span> &#123;</span><br><span class="line">                       <span class="keyword">if</span>(index === arr.<span class="property">length</span> - <span class="number">1</span>) &#123;</span><br><span class="line">                           <span class="keyword">return</span> val[key] = e.<span class="property">target</span>.<span class="property">value</span></span><br><span class="line">                       &#125;</span><br><span class="line">                       val = val[key]</span><br><span class="line">                   &#125;)</span><br><span class="line">               &#125;)</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-
-<p>这样我们就彻底完成了一个<code>toy_vue</code>。</p>
-
+        
+        <p class="article-more-link">
+            <a href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
@@ -336,49 +357,6 @@
         
         <p class="article-more-link">
             <a href="/2023/03/03/%E7%BD%91%E7%BB%9C/03-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/03/JS/03-%E6%89%8B%E5%86%99%E7%80%91%E5%B8%83%E6%B5%81/">手写瀑布流</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-03T14:35:15.259Z" itemprop="datePublished">2023-03-03</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>瀑布流是我们经常用到的效果，它有一个特点就是<code>等宽不定高</code></p>
-<p>那我们如何实现一个这样的效果呢，我们一步一步来做一下</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/03/JS/03-%E6%89%8B%E5%86%99%E7%80%91%E5%B8%83%E6%B5%81/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>

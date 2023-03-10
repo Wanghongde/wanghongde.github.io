@@ -7,7 +7,7 @@
 
     
 
-    <title>王洪德的技术博客</title>
+    <title>浅析BFC | 王洪德的技术博客</title>
     <meta name="author" content="John Doe" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -52,7 +52,7 @@
 
     <nav id="nav-inner" class="nav-inner">
         
-            <a class="nav-item active" href="/">
+            <a class="nav-item" href="/">
                 <span class="nav-text">首页</span>
             </a>
         
@@ -68,6 +68,8 @@
     <div id="aside-inner" class="aside-inner">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://example.com"></form>
 
+        
+        
         
         
 
@@ -110,73 +112,20 @@
 
         <div id="content" class="content">
             <div id="wrapper" class="wrapper" style="max-width: 800px">
-                
-    <article class="article" itemscope itemprop="blogPost">
+                <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2023/03/01/JS/01-%E6%89%8B%E5%86%99Promise/">手写Promise</a>
+            浅析BFC
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/page/3/index.html">
+            <a class="article-date" href="http://example.com/2023/03/09/CSS/02-%E6%B5%85%E6%9E%90BFC/index.html">
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2023-03-01T02:51:30.445Z" itemprop="datePublished">2023-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="Promise-的基本语法"><a href="#Promise-的基本语法" class="headerlink" title="Promise 的基本语法"></a>Promise 的基本语法</h3><p>promise 是 es6 提供的解决异步编程的新语法， 主要解决两个问题，第一个解决之前回调地狱(层层嵌套)， 第二个不需要立即指定回调函数，还可以在异步操作执行完提供。</p>
-<p>promise 可以有三个状态 <code>pendding</code>、<code>resolved</code>、<code>rejected</code>，并且是不可逆的。</p>
-<ol>
-<li><p>由<code>pendding</code> 变成 <code>resolved</code>: </p>
-<p>a. 构造函数内调用 resolve</p>
-</li>
-<li><p>由 <code>pendding</code> 变成 <code>rejected</code></p>
-</li>
-</ol>
-<p>​       a. 构造函数调用reject</p>
-<p>​       b. 构造函数抛出错误</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/01/JS/01-%E6%89%8B%E5%86%99Promise/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/01/CSS/01-Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/page/3/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.431Z" itemprop="datePublished">2023-03-01</time>
+    <time class="vm" datetime="2023-03-09T08:11:46.484Z" itemprop="datePublished">2023-03-09</time>
 </a>
 
             
@@ -191,18 +140,6 @@
     
     <section class="article-body markdown-body">
         
-        <h2 id="Flex-的容器和项目"><a href="#Flex-的容器和项目" class="headerlink" title="Flex 的容器和项目"></a>Flex 的容器和项目</h2><p>随着主流框架的流行，人们已经渐渐抛弃了低版本浏览器了，flex 布局也成为了主流布局方式。</p>
-<p>现在的 flex布局 配合 <code>vw</code>和<code>vh</code> 也已经成为了移动端的主流布局方式, 这种移动端适配方案我们之后再聊。</p>
-<p>现在先主要聊一下flex相关内容。</p>
-<p>flex 是 <code>flexible box</code> 的缩写， 意为弹性布局，可以让我们布局页面更加灵活。</p>
-<p>任何元素都可以做为 flex元素(块元素、甚至行内元素)，采用flex布局的元素，我们可以叫他<code>容器</code>，而<code>容器</code>里的元素称为<code>项目</code>， <code>.box</code> 就是容器，<code>.item</code>就是项目。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/01/CSS/01-Flex%E5%B8%83%E5%B1%80/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
         
         
     </section>
@@ -211,15 +148,14 @@
 
 
 
-<nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-</nav>
-
-
-
             </div>
         </div>
 
+        
+            
+            <a id="pagenext" href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/" class="article-next" title="手写 toy_vue (下)"><i class="icon-arrow-right"></i></a>
+            
+            
         
 
         <footer class="footer">
@@ -283,6 +219,33 @@
         });
     });
     </script>
+    
+        
+<script src="/js/scrollspy.min.js"></script>
+
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
     
 
 </body>
