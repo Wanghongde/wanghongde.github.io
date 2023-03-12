@@ -116,6 +116,138 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/03/01/Vue/02-%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/">Vue的虚拟列表</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-01T02:51:30.475Z" itemprop="datePublished">2023-03-01</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>我们在渲染移动端页面时，有时会遇到特别多的数据，渲染这种列表就叫<code>长列表</code></p>
+<p><code>长列表</code>如果直接渲染到页面， 当列表项数过多并且列表项结构复杂的时候 ，会造正页面有大量的DOM需要处理，非常容易造成卡顿甚至卡死。</p>
+<p>常见的一种解决方式就是<code>虚拟列表</code>，那我们就来一起写一个简单的<code>虚拟列表</code>吧。</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/01/Vue/02-%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/01/Vue/01-Vue%E7%9A%84Reactivity/">Vue的响应式</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-01T02:51:30.469Z" itemprop="datePublished">2023-03-01</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="响应式是什么"><a href="#响应式是什么" class="headerlink" title="响应式是什么"></a>响应式是什么</h3><p>什么是响应式呢，举个简单例子 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = a * <span class="number">10</span>  <span class="comment">// 我们希望 b 是 a 的 10 倍</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)  <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)  <span class="comment">// 我们还希望 b 是 a 的 10 倍,那这个时候就麻烦了,需要接着计算 </span></span><br></pre></td></tr></table></figure>
+
+<p>假设有一个函数<code>fn</code> ，当 <code>a</code> 改变则函数<code>fn</code>自动执行，将<code>b</code>重新计算就好了，这其实就是可以简单理解成<code>响应式</code>。</p>
+<p>说的更准确点，提前准备一个函数<code>watchEffect</code>，当函数里面的依赖项(数据)发生更改，就自动执行<code>watchEffect</code>，这就是<code>响应式</code> 。</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/01/Vue/01-Vue%E7%9A%84Reactivity/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/01/JS/02-%E6%89%8B%E5%86%99axios/">手写 axios</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-01T02:51:30.455Z" itemprop="datePublished">2023-03-01</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p><code>axios</code> 是当前比较流行的发请求的一个第三方库，<code>axios</code> 支持浏览器和node端，支持 promise语法，有丰富的配置项<code>拦截器</code>，那我们来一起边使用<code>axios</code>，边手动写一下<code>axios</code>的方法吧。</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/01/JS/02-%E6%89%8B%E5%86%99axios/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/03/01/JS/01-%E6%89%8B%E5%86%99Promise/">手写Promise</a>
         </h1>
         
