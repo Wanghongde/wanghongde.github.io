@@ -116,6 +116,123 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/03/12/CSS/04-%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92/">重绘重排</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-12T15:34:16.707Z" itemprop="datePublished">2023-03-12</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/CSS/" rel="tag">CSS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>浏览器打开页面，在页面生成的时候，至少需要一次初始化渲染,也就是至少发生一次<code>重绘</code>和<code>重排</code>，用户访问页面的过程中还会不断的触发<code>重绘</code>和<code>重排</code>。</p>
+<p>不管是发生了<code>重绘</code>还是<code>重排</code>,都会影响性能，最可怕的是<code>重排</code>，它会让部分甚至整个渲染树重新分析，让元素的尺寸计算，重新排列元素。</p>
+<p><code>重绘</code>的代价要小一些，表现为元素的外观被改变，比如文字颜色，背景颜色等。</p>
+<blockquote>
+<p>重排一定会导致重绘，重绘不一定出现重排</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/12/CSS/04-%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/12/JS/10-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">浅拷贝和深拷贝</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-12T15:09:22.204Z" itemprop="datePublished">2023-03-12</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>我们</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/12/JS/09-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/">防抖和节流</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-12T15:09:02.723Z" itemprop="datePublished">2023-03-12</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>我们</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/03/12/JS/08-%E6%89%8B%E5%86%99%20new/">手写 new</a>
         </h1>
         
@@ -139,8 +256,24 @@
     
     <section class="article-body markdown-body">
         
-        <p>我们</p>
+        <p>我们先写一段构造函数创建实例的代码感受下<code>new</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">uname, address</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">uname</span> = uname</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">address</span> = address</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`你好, 我是<span class="subst">$&#123;<span class="variable language_">this</span>.uname&#125;</span>, 我来自<span class="subst">$&#123;<span class="variable language_">this</span>.address&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;石家庄&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">address</span>)  <span class="comment">// 石家庄</span></span><br><span class="line">p.<span class="title function_">sayHi</span>()  <span class="comment">// 你好, 我是张三, 我来自石家庄</span></span><br></pre></td></tr></table></figure>
 
+<p>通过打印和分析，我们可以知道<code>new</code>做了这几件事</p>
+<ol>
+<li>创建了新对象</li>
+<li>将 <code>Person</code>的属性添加到新对象上</li>
+<li>继承<code>Person</code>原型对象上的方法</li>
+<li>返回新对象</li>
+</ol>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/12/JS/08-%E6%89%8B%E5%86%99%20new/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
@@ -174,8 +307,24 @@
     
     <section class="article-body markdown-body">
         
-        <p>我们</p>
+        <p>在 JS 中提到修改 <code>this</code>指向，首先想到的就是 <code>bind</code>、<code>call</code>、<code>apply</code>。</p>
+<p>面试也经常会问到三个的区别，那我们就一起来边使用边手动书写一下吧。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">address</span>: <span class="string">&#x27;石家庄&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> address = <span class="string">&#x27;北京&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="keyword">function</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">address</span>, num1, num2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 北京 1 2</span></span><br><span class="line">fn.<span class="title function_">call</span>(obj, <span class="number">11</span>, <span class="number">22</span>) <span class="comment">// 石家庄 11 22</span></span><br></pre></td></tr></table></figure>
 
+<p>通过上边案例我们可以发现call做了这几件事</p>
+<ol>
+<li>修改了 <code>fn</code> 的 <code>this</code>指向</li>
+<li>传递了参数</li>
+<li>调用了<code>fn</code>函数</li>
+</ol>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/12/JS/07-%E6%89%8B%E5%86%99%20call&bind&apply/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
@@ -209,136 +358,13 @@
     
     <section class="article-body markdown-body">
         
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/09/CSS/02-%E6%B5%85%E6%9E%90BFC/">浅析BFC</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-09T08:11:46.484Z" itemprop="datePublished">2023-03-09</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/CSS/" rel="tag">CSS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>CSS中有一个比较重要的概念 BFC，搞懂BFC可以是我们书写样式更加从容。</p>
-<p>BFC(block formatting context)直译过来就是 块级格式化上下问，简单来说就是，BFC 是一个独立的空间(布局环境)， 让空间里的子元素不会影响外面的布局。</p>
-<blockquote>
-<p>BFC 可以想象成孙悟空金箍棒画的圈，圈里面的师傅自己玩自己的，不被外部影响，也不会影响外部</p>
-</blockquote>
+        <p>Grid布局既网格布局，是一种新的 CSS 的布局模式，是比较强大的布局方式。</p>
+<p>Flex布局也就是弹性布局很好用，但是只能解决<code>一维布局</code>，也就是一行或者一列进行布局。</p>
+<p>Grid布局则是网格布局，可以解决<code>二维布局</code>，也就是由纵横相交的两组网格线形成的框架性布局结构，能够同时处理行与列 。</p>
+<p>那在布局的时候，我们能用Flex布局就是用Flex布局解决，解决不了则使用 Grid布局。</p>
         
         <p class="article-more-link">
-            <a href="/2023/03/09/CSS/02-%E6%B5%85%E6%9E%90BFC/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/">手写 toy_vue (下)</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-09T06:53:30.150Z" itemprop="datePublished">2023-03-09</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>我们已经可以将数据编译到页面上，但是数据改变不能影响页面的从新编译，所以要在数据修改时，也就是<code>setter</code>中，进行事件的发布，在<code>getter</code>时进行事件的监听。这里肯定需要用到<code>发布订阅</code>，所以先抛开其他，我们先实现一个<code>发布订阅</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Dep</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">list</span> = []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Dep</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">addSub</span> = <span class="keyword">function</span>(<span class="params">sub</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">list</span>.<span class="title function_">push</span>(sub)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Dep</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">notify</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">list</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">    sub.<span class="title function_">update</span>()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Watcher</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">fn</span> = fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Watcher</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">update</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">fn</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/09/JS/05-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8A)/">手写 toy_vue (上)</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-09T05:34:44.367Z" itemprop="datePublished">2023-03-09</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>vue 是现在比较主流的基于<code>MVVM</code>的框架，当数据改变页面就更新，页面更新数据也相应改变。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line">        &#123;&#123; title &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;info.address&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">let</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">el</span>: <span class="string">&#x27;app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">title</span>: <span class="string">&#x27;使用vue&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">info</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">address</span>: <span class="string">&#x27;石家庄&#x27;</span></span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>那么<code>vue</code> 是如何做到将data的数据渲染到页面，又是如何实现双向绑定呢，我们来一起做一下。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/09/JS/05-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8A)/#more">
+            <a href="/2023/03/12/CSS/03-Grid%E5%B8%83%E5%B1%80/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -352,7 +378,7 @@
 
 
 <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
 </nav>
 
 
