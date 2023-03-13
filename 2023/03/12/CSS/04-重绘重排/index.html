@@ -7,10 +7,10 @@
 
     
 
-    <title>Tag: JS | 王洪德的技术博客</title>
+    <title>重绘重排 | 王洪德的技术博客</title>
     <meta name="author" content="John Doe" />
     <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="description" content="浏览器打开页面，在页面生成的时候，至少需要一次初始化渲染,也就是至少发生一次重绘和重排，用户访问页面的过程中还会不断的触发重绘和重排。不管是发生了重绘还是重排,都会影响性能，最可怕的是重排，它会让部分甚至整个渲染树重新分析，让元素的尺寸计算，重新排列元素。重绘的代价要小一些，表现为元素的外观被改变，比如文字颜色，背景颜色等。重排一定会导致重绘，重绘不一定出现重排那到底重排什么时候会触发呢？添加或删除可见的 DOM元素元素位置改变元素尺寸改变，边距、边框、宽高等元素内容改变， 文本改变或者图片大小" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 
@@ -70,6 +70,8 @@
 
         
         
+        
+        
 
         
         <div class="author-meta">
@@ -110,240 +112,61 @@
 
         <div id="content" class="content">
             <div id="wrapper" class="wrapper" style="max-width: 800px">
-                
+                <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            重绘重排
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/2023/03/12/CSS/04-%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-12T15:34:16.707Z" itemprop="datePublished">2023-03-12</time>
+</a>
 
-
-<div class="page-hd">
-    JS
-    <small>(10)</small>
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/CSS/" rel="tag">CSS</a>
 </div>
 
 
-
+        </div>
+    </header>
     
-    
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2023" class="page-hd">
-        2023
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/10-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">浅拷贝和深拷贝</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:09:22.204Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
+        <p>浏览器打开页面，在页面生成的时候，至少需要一次初始化渲染,也就是至少发生一次<code>重绘</code>和<code>重排</code>，用户访问页面的过程中还会不断的触发<code>重绘</code>和<code>重排</code>。</p>
+<p>不管是发生了<code>重绘</code>还是<code>重排</code>,都会影响性能，最可怕的是<code>重排</code>，它会让部分甚至整个渲染树重新分析，让元素的尺寸计算，重新排列元素。</p>
+<p><code>重绘</code>的代价要小一些，表现为元素的外观被改变，比如文字颜色，背景颜色等。</p>
+<blockquote>
+<p>重排一定会导致重绘，重绘不一定出现重排</p>
+</blockquote>
+<span id="more"></span>
 
-    
-    
+<p>那到底重排什么时候会触发呢？</p>
+<ul>
+<li>添加或删除可见的 DOM元素</li>
+<li>元素位置改变</li>
+<li>元素尺寸改变，<code>边距</code>、<code>边框</code>、<code>宽高</code>等</li>
+<li>元素内容改变， 文本改变或者图片大小改变</li>
+<li>页面初始化渲染</li>
+<li>修改浏览器窗口尺寸</li>
+</ul>
+<p>那我们可以优化重排，减少重绘重排的次数</p>
+<pre><code>1. 浏览器自动就会有一个维护的队列，把会引起重绘重排的操作放入1队列中，等队列中的操作到一定数量或者到一定的时间间隔，就会自动处理
+ 2. 集中的修改样式，比如设置类名，这样可以尽可能利用浏览器优化机制，一次重绘重排就完成渲染
+ 3. 利用 `transform` 实现动画效果，不需要进行布局绘制和样式计算等操作，不会影响到其他盒子，只触发自己的重绘
+ 4. 使用文档碎片， `createDocumentFragment` 操作的节点是在内存里处理，并不会更新页面，等处理完成在创建到页面，`Vue`的渲染就是使用的文档碎片
+</code></pre>
 
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/09-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/">防抖和节流</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:09:02.723Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/08-%E6%89%8B%E5%86%99%20new/">手写 new</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:06:17.102Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/07-%E6%89%8B%E5%86%99%20call&bind&apply/">手写 call&amp;bind&amp;apply</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:05:32.428Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/">手写 toy_vue (下)</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-09T06:53:30.150Z" itemprop="datePublished">3/9</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/09/JS/05-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8A)/">手写 toy_vue (上)</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-09T05:34:44.367Z" itemprop="datePublished">3/9</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/05/JS/04-%E6%89%8B%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">手写图片懒加载</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-05T02:06:22.852Z" itemprop="datePublished">3/5</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/03/JS/03-%E6%89%8B%E5%86%99%E7%80%91%E5%B8%83%E6%B5%81/">手写瀑布流</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-03T14:35:15.259Z" itemprop="datePublished">3/3</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/01/JS/02-%E6%89%8B%E5%86%99axios/">手写 axios</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.455Z" itemprop="datePublished">3/1</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/01/JS/01-%E6%89%8B%E5%86%99Promise/">手写Promise</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.445Z" itemprop="datePublished">3/1</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-
-</ol></section>
-
 
 
 
@@ -351,6 +174,11 @@
             </div>
         </div>
 
+        
+            
+            <a id="pagenext" href="/2023/03/12/JS/10-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="article-next" title="浅拷贝和深拷贝"><i class="icon-arrow-right"></i></a>
+            
+            
         
 
         <footer class="footer">
@@ -414,6 +242,33 @@
         });
     });
     </script>
+    
+        
+<script src="/js/scrollspy.min.js"></script>
+
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
     
 
 </body>

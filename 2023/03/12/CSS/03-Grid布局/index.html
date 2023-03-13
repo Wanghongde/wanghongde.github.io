@@ -10,7 +10,7 @@
     <title>Grid布局 | 王洪德的技术博客</title>
     <meta name="author" content="John Doe" />
     <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="description" content="Grid布局既网格布局，是一种新的 CSS 的布局模式，是比较强大的布局方式。Flex布局也就是弹性布局很好用，但是只能解决一维布局，也就是一行或者一列进行布局。Grid布局则是网格布局，可以解决二维布局，也就是由纵横相交的两组网格线形成的框架性布局结构，能够同时处理行与列 。那在布局的时候，我们能用Flex布局就是用Flex布局解决，解决不了则使用 Grid布局。Grid布局属性可以分为两大类容器属性display: grid / inline-gridgrid-template-rows: " />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 
@@ -140,7 +140,40 @@
     
     <section class="article-body markdown-body">
         
-        
+        <p>Grid布局既网格布局，是一种新的 CSS 的布局模式，是比较强大的布局方式。</p>
+<p>Flex布局也就是弹性布局很好用，但是只能解决<code>一维布局</code>，也就是一行或者一列进行布局。</p>
+<p>Grid布局则是网格布局，可以解决<code>二维布局</code>，也就是由纵横相交的两组网格线形成的框架性布局结构，能够同时处理行与列 。</p>
+<p>那在布局的时候，我们能用Flex布局就是用Flex布局解决，解决不了则使用 Grid布局。</p>
+<span id="more"></span>
+
+<p>Grid布局属性可以分为两大类</p>
+<ul>
+<li>容器属性<ul>
+<li>display: grid / inline-grid</li>
+<li>grid-template-rows:  显式网格分几行  分别是多高</li>
+<li>grid-template-columns:  显式网格分几列  分别是多宽</li>
+<li>grid-rows-gap / grid-columns-gap / grid-gap: 网格的间隙大小</li>
+<li>justify-item / align-item / place-item: 项目相对单元格 水平/垂直的 位置</li>
+<li>justify-content / align-content / place-content: 整个项目块在容器的 水平/垂直的位置</li>
+<li>grid-auto-flow: 网格的排列顺序 默认是row既 <code>先行后列</code>, 也可以改成column既<code>先列后行</code></li>
+<li>grid-auto-rows: 隐式网格的高</li>
+<li>grid-auto-columns： 隐式网格的宽 </li>
+<li>grid-template-areas: 定义区域，一个区域由一个或者多个单元格组成</li>
+</ul>
+</li>
+<li>项目属性<ul>
+<li> gird-area: 指定项目放在哪一个区域，需要与容器的 grid-template-areas搭配</li>
+<li>justify-self：指定单个项目 相对单元格 水平 的位置</li>
+<li>align-self： 指定单个项目 相对单元格垂直的位置</li>
+<li>place-self:  指定单个项目对象单元格 水平/垂直的位置</li>
+<li>grid-column-start：左边框所在的垂直网格线</li>
+<li>grid-column-end：右边框所在的垂直网格线</li>
+<li>grid-row-start：上边框所在的水平网格线</li>
+<li>grid-row-end：下边框所在的水平网格线</li>
+</ul>
+</li>
+</ul>
+
         
     </section>
 </article>

@@ -7,7 +7,7 @@
 
     
 
-    <title>Tag: JS | 王洪德的技术博客</title>
+    <title>王洪德的技术博客</title>
     <meta name="author" content="John Doe" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -52,7 +52,7 @@
 
     <nav id="nav-inner" class="nav-inner">
         
-            <a class="nav-item" href="/">
+            <a class="nav-item active" href="/">
                 <span class="nav-text">首页</span>
             </a>
         
@@ -111,240 +111,109 @@
         <div id="content" class="content">
             <div id="wrapper" class="wrapper" style="max-width: 800px">
                 
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/01/JS/01-%E6%89%8B%E5%86%99Promise/">手写Promise</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/page/4/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-01T02:51:30.445Z" itemprop="datePublished">2023-03-01</time>
+</a>
 
-
-<div class="page-hd">
-    JS
-    <small>(10)</small>
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
 </div>
 
 
-
+        </div>
+    </header>
     
-    
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2023" class="page-hd">
-        2023
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/10-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">浅拷贝和深拷贝</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:09:22.204Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <h3 id="Promise-的基本语法"><a href="#Promise-的基本语法" class="headerlink" title="Promise 的基本语法"></a>Promise 的基本语法</h3><p>promise 是 es6 提供的解决异步编程的新语法， 主要解决两个问题，第一个解决之前回调地狱(层层嵌套)， 第二个不需要立即指定回调函数，还可以在异步操作执行完提供。</p>
+<p>promise 可以有三个状态 <code>pendding</code>、<code>resolved</code>、<code>rejected</code>，并且是不可逆的。</p>
+<ol>
+<li><p>由<code>pendding</code> 变成 <code>resolved</code>: </p>
+<p>a. 构造函数内调用 resolve</p>
+</li>
+<li><p>由 <code>pendding</code> 变成 <code>rejected</code></p>
+</li>
+</ol>
+<p>​       a. 构造函数调用reject</p>
+<p>​       b. 构造函数抛出错误</p>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/09-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/">防抖和节流</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:09:02.723Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <p class="article-more-link">
+            <a href="/2023/03/01/JS/01-%E6%89%8B%E5%86%99Promise/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/08-%E6%89%8B%E5%86%99%20new/">手写 new</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:06:17.102Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/12/JS/07-%E6%89%8B%E5%86%99%20call&bind&apply/">手写 call&amp;bind&amp;apply</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-12T15:05:32.428Z" itemprop="datePublished">3/12</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
 
-    
-    
 
-    <li class="archive-section-item">
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/09/JS/06-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8B)/">手写 toy_vue (下)</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-09T06:53:30.150Z" itemprop="datePublished">3/9</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <h1 itemprop="name">
+            <a href="/2023/03/01/CSS/01-Flex%E5%B8%83%E5%B1%80/">Flex布局</a>
+        </h1>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/09/JS/05-%E6%89%8B%E5%86%99toy_vue(%E4%B8%8A)/">手写 toy_vue (上)</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/page/4/index.html">
     
-    <time class="vm" datetime="2023-03-09T05:34:44.367Z" itemprop="datePublished">3/9</time>
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-01T02:51:30.431Z" itemprop="datePublished">2023-03-01</time>
 </a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
-    
-    
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/CSS/" rel="tag">CSS</a>
+</div>
 
-    <li class="archive-section-item">
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/05/JS/04-%E6%89%8B%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">手写图片懒加载</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-05T02:06:22.852Z" itemprop="datePublished">3/5</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <h2 id="Flex-的容器和项目"><a href="#Flex-的容器和项目" class="headerlink" title="Flex 的容器和项目"></a>Flex 的容器和项目</h2><p>随着主流框架的流行，人们已经渐渐抛弃了低版本浏览器了，flex 布局也成为了主流布局方式。</p>
+<p>现在的 flex布局 配合 <code>vw</code>和<code>vh</code> 也已经成为了移动端的主流布局方式, 这种移动端适配方案我们之后再聊。</p>
+<p>现在先主要聊一下flex相关内容。</p>
+<p>flex 是 <code>flexible box</code> 的缩写， 意为弹性布局，可以让我们布局页面更加灵活。</p>
+<p>任何元素都可以做为 flex元素(块元素、甚至行内元素)，采用flex布局的元素，我们可以叫他<code>容器</code>，而<code>容器</code>里的元素称为<code>项目</code>， <code>.box</code> 就是容器，<code>.item</code>就是项目。</p>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/03/JS/03-%E6%89%8B%E5%86%99%E7%80%91%E5%B8%83%E6%B5%81/">手写瀑布流</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-03T14:35:15.259Z" itemprop="datePublished">3/3</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <p class="article-more-link">
+            <a href="/2023/03/01/CSS/01-Flex%E5%B8%83%E5%B1%80/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/01/JS/02-%E6%89%8B%E5%86%99axios/">手写 axios</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.455Z" itemprop="datePublished">3/1</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2023/03/01/JS/01-%E6%89%8B%E5%86%99Promise/">手写Promise</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2023/03">
-    
-    <time class="vm" datetime="2023-03-01T02:51:30.445Z" itemprop="datePublished">3/1</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
 
 
-</ol></section>
 
 
+<nav class="page-nav">
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+</nav>
 
 
 
