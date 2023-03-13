@@ -163,41 +163,6 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2023/03/12/JS/10-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">浅拷贝和深拷贝</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-12T15:09:22.204Z" itemprop="datePublished">2023-03-12</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>我们</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
             <a href="/2023/03/12/JS/09-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/">防抖和节流</a>
         </h1>
         
@@ -221,8 +186,17 @@
     
     <section class="article-body markdown-body">
         
-        <p>我们</p>
-
+        <p>函数<code>防抖</code>和<code>节流</code>是我们优化高频率代码的一种手段，比如浏览器的 <code>resize</code>、<code>scroll</code> 、<code>mousemove</code>等事件在触发时，会不断的调用绑定到事件上的回调函数，极大的浪费了资源，降低前端性能。</p>
+<p><code>防抖</code> 就是 n 秒后再执行该事件，若 n 秒内被重复触发，则重新计时。</p>
+<p><code>节流</code> 则是  n 秒内只运行一次，若在 n秒内重复触发，则只有一次生效。</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/12/JS/09-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
@@ -365,6 +339,52 @@
         
         <p class="article-more-link">
             <a href="/2023/03/12/CSS/03-Grid%E5%B8%83%E5%B1%80/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/09/CSS/02-%E6%B5%85%E6%9E%90BFC/">浅析BFC</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-09T08:11:46.484Z" itemprop="datePublished">2023-03-09</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/CSS/" rel="tag">CSS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>CSS中有一个比较重要的概念 BFC，搞懂BFC可以是我们书写样式更加从容。</p>
+<p>BFC(block formatting context)直译过来就是 块级格式化上下问，简单来说就是，BFC 是一个独立的空间(布局环境)， 让空间里的子元素不会影响外面的布局。</p>
+<blockquote>
+<p>BFC 可以想象成孙悟空金箍棒画的圈，圈里面的师傅自己玩自己的，不被外部影响，也不会影响外部</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/09/CSS/02-%E6%B5%85%E6%9E%90BFC/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
