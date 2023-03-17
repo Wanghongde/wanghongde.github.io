@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>Vue开发移动端css适配 | 王洪德的技术博客</title>
+    <meta name="author" content="John Doe" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="相对于 PC端来说，移动端设备在进行css适配时要麻烦一些。这时候我们就应该理顺出一套解决方法，适配各种手机。之前呢，我们使用rem配合手淘的lib-flexible实现移动端适配。现在有了更好的vw和vh单位，再配合弹性布局和grid布局。vw 视口的最大宽度，1vw = 视口宽度的百分之一vh 视口的最大高度， 1vh = 视口高度的百分之一假如我们是 750px 宽的设计稿，那我们只需要量出元素的宽度，比如元素宽度占屏幕一半375px，然后让375px 自动转成50vw，那这样就既让750" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+    
+    <link rel="alternate" href="/atom.xml" title="王洪德的技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">王洪德的技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#px-to-vw"><span class="toc-number">1.</span> <span class="toc-text">px-to-vw</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#postcss-px-to-viewport"><span class="toc-number">2.</span> <span class="toc-text">postcss-px-to-viewport</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <div id="wrapper" class="wrapper" style="max-width: 800px">
+                <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            Vue开发移动端css适配
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/2023/03/17/Vue/03-Vue%E5%BC%80%E5%8F%91%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E9%80%82%E9%85%8D/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-17T13:09:00.237Z" itemprop="datePublished">2023-03-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>相对于 PC端来说，移动端设备在进行css适配时要麻烦一些。</p>
+<p>这时候我们就应该理顺出一套解决方法，适配各种手机。</p>
+<p>之前呢，我们使用<code>rem</code>配合手淘的<code>lib-flexible</code>实现移动端适配。</p>
+<p>现在有了更好的<code>vw</code>和<code>vh</code>单位，再配合弹性布局和<code>grid</code>布局。</p>
+<p><code>vw</code> 视口的最大宽度，<code>1vw</code> = 视口宽度的百分之一</p>
+<p><code>vh</code> 视口的最大高度， <code>1vh</code> = 视口高度的百分之一</p>
+<span id="more"></span>
+
+<p>假如我们是 <code>750px</code> 宽的设计稿，那我们只需要量出元素的宽度，比如元素宽度占屏幕一半<code>375px</code>，然后让<code>375px</code> 自动转成<code>50vw</code>，那这样就既让<code>750px</code>的屏幕占一半的宽，其他分辨率下元素也是占屏幕宽度一半，这不就完成适配了嘛。</p>
+<p>那如何让<code>px</code>转成<code>vw</code>呢？</p>
+<h3 id="px-to-vw"><a href="#px-to-vw" class="headerlink" title="px-to-vw"></a>px-to-vw</h3><p>如果是开发多页面应用，并不借助框架或者构建工具，可以使用<code>vs code</code> 的插件<code>px-to-vw</code></p>
+<p>只需要在插件里搜索并安装，插件默认设计稿是<code>750px</code>，也就是<code>7.5px</code>会转换成<code>1vw</code>。</p>
+<p> 插件不会在你写完<code>px</code>自动转换成<code>vw</code>，需要你选中希望转换的代码，按下<code>alt +z</code>，进行转换。</p>
+<h3 id="postcss-px-to-viewport"><a href="#postcss-px-to-viewport" class="headerlink" title="postcss-px-to-viewport"></a>postcss-px-to-viewport</h3><p>如果开发的是单页面应用，使用了框架和构建工具，就可以借助<code>postcss</code>的插件<code>postcss-px-to-viewport</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install postcss-px-to-viewport</span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>vite.config.ts</code>或者<code>webpack.config.js</code>或者<code>vue.cofnig.js</code>配置文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> postcsspxtoviewport <span class="keyword">from</span> <span class="string">&#x27;postcss-px-to-viewport&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="comment">// ...  </span></span><br><span class="line">  <span class="attr">css</span>: &#123;</span><br><span class="line">    <span class="attr">postcss</span>: &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="title function_">postcsspxtoviewport</span>(&#123;</span><br><span class="line">          <span class="attr">unitToConvert</span>: <span class="string">&#x27;px&#x27;</span>, <span class="comment">// 要转化的单位</span></span><br><span class="line">          <span class="attr">viewportWidth</span>: <span class="number">750</span> <span class="comment">// UI设计稿的宽度</span></span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>我们在页面开发时直接写入<code>px</code>单位就好，在经过构建工具打包后的代码里，会自动转换成<code>vw</code>单位。</p>
+
+        
+    </section>
+</article>
+
+
+
+
+            </div>
+        </div>
+
+        
+            
+            <a id="pagenext" href="/2023/03/17/Vue/02-%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/" class="article-next" title="Vue的虚拟列表"><i class="icon-arrow-right"></i></a>
+            
+            
+        
+
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+
+    
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        
+<script src="/js/scrollspy.min.js"></script>
+
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>

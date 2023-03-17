@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>Vue的响应式 | 王洪德的技术博客</title>
+    <meta name="author" content="John Doe" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="响应式是什么什么是响应式呢，举个简单例子 1234567let a = 1let b = a * 10  // 我们希望 b 是 a 的 10 倍console.log(b)  // 10a = 5console.log(b)  // 我们还希望 b 是 a 的 10 倍,那这个时候就麻烦了,需要接着计算 假设有一个函数fn ，当 a 改变则函数fn自动执行，将b重新计算就好了，这其实就是可以简单理解成响应式。说的更准确点，提前准备一个函数watchEffect，当函数里面的依赖项(数据)发生更" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+    
+    <link rel="alternate" href="/atom.xml" title="王洪德的技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">王洪德的技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">响应式是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">发布订阅模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Proxy%E7%89%88"><span class="toc-number">4.</span> <span class="toc-text">Proxy版</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <div id="wrapper" class="wrapper" style="max-width: 800px">
+                <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            Vue的响应式
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/2023/03/17/Vue/01-Vue%E7%9A%84Reactivity/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-17T13:09:00.236Z" itemprop="datePublished">2023-03-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="响应式是什么"><a href="#响应式是什么" class="headerlink" title="响应式是什么"></a>响应式是什么</h3><p>什么是响应式呢，举个简单例子 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = a * <span class="number">10</span>  <span class="comment">// 我们希望 b 是 a 的 10 倍</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)  <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)  <span class="comment">// 我们还希望 b 是 a 的 10 倍,那这个时候就麻烦了,需要接着计算 </span></span><br></pre></td></tr></table></figure>
+
+<p>假设有一个函数<code>fn</code> ，当 <code>a</code> 改变则函数<code>fn</code>自动执行，将<code>b</code>重新计算就好了，这其实就是可以简单理解成<code>响应式</code>。</p>
+<p>说的更准确点，提前准备一个函数<code>watchEffect</code>，当函数里面的依赖项(数据)发生更改，就自动执行<code>watchEffect</code>，这就是<code>响应式</code> 。</p>
+<span id="more"></span>
+
+<p>我们再进一步，函数里的依赖项发生改变，则更新页面，不就是<code>model</code>修改，<code>view</code>自动更新嘛。</p>
+<p><code>@nx-js/observer-util</code> 刚好就提供了类似的功能，只不过函数名叫<code>observe</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable, observe &#125; <span class="keyword">from</span> <span class="string">&#x27;@nx-js/observer-util&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = <span class="title function_">observable</span>(&#123;</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">observe</span>(<span class="function">() =&gt;</span> &#123;  <span class="comment">// 每当数据改变 observe函数 就自动执行</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">age</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj.<span class="property">age</span> += <span class="number">1</span>  <span class="comment">// 当 obj.age 增加就会执行observe  19</span></span><br><span class="line"></span><br><span class="line">obj.<span class="property">age</span> += <span class="number">1</span>  <span class="comment">// 当 obj.age 增加就会执行observe  20</span></span><br></pre></td></tr></table></figure>
+
+<p>理解了<code>响应式</code> 是什么，那接下来我们也一步步实现个响应式。</p>
+<h3 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h3><p>发布订阅模式是设计模式的一种，说个现实的例子，小刘、小红、小张去电脑城买电脑，但是没有优惠，于是给店员留了电话到电话本上，店员等电脑城搞活动，打电话通知这三个人。店员就是<code>发布者</code>，记录了电话的电话本就是<code>缓存列表</code>，消费者就是<code>订阅者</code> 。</p>
+<p>给DOM添加事件的<code>addEventListener</code>也是发布订阅。</p>
+<p>接下来我们模拟着实现一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 暂时存放 watchEffect 的变量</span></span><br><span class="line"><span class="keyword">let</span> activeEffect</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dep</span> &#123;</span><br><span class="line">    <span class="comment">// 用 Set 做订阅者列表 以防止列表中添加多个完全相同的函数</span></span><br><span class="line">    subscribers = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 依赖收集方法</span></span><br><span class="line">	<span class="title function_">depend</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// 如果 activeEffect 为空 则代表没有 watcheffect</span></span><br><span class="line">        <span class="keyword">if</span>(activeEffect) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">subscribers</span>.<span class="title function_">add</span>(activeEffect)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 更新操作 通常在值修改后执行 发布消息</span></span><br><span class="line">	<span class="title function_">notify</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">subscribers</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">effect</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">effect</span>()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模仿 Vue3 的 watchEffect 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">watchEffect</span>(<span class="params">effect</span>) &#123;</span><br><span class="line">    <span class="comment">// 先把传进来的函数放到 activeEffect</span></span><br><span class="line">    activeEffect = effect</span><br><span class="line">    <span class="comment">// 执行一下 watchEffect 里面的函数</span></span><br><span class="line">    <span class="title function_">effect</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">let</span> dep = <span class="keyword">new</span> <span class="title class_">Dep</span>()</span><br><span class="line"><span class="comment">// 暂定一个全局变量 age</span></span><br><span class="line"><span class="keyword">let</span> globalAge = <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">age</span>() &#123;</span><br><span class="line">        dep.<span class="title function_">depend</span>()</span><br><span class="line">        <span class="keyword">return</span> globalAge</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span> <span class="title function_">age</span>(<span class="params">newAge</span>) &#123;</span><br><span class="line">        globalAge = newAge</span><br><span class="line">        dep.<span class="title function_">notify</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="property">age</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">user.<span class="property">age</span> += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>我们初步实现了最初的想法， 每当依赖项<code>user.age</code> 修改，都会执行<code>watchEffect</code>函数。</p>
+<p>而这里的 dep对象 就是<code>发布者</code>,  subscribers 就是<code>缓存列表</code> ，dep.notify() 是 <code>发布消息</code>。</p>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>虽然上边实现了功能，但是用起来太麻烦了，需要提供对象的 <code>getter</code>和<code>setter</code>，还要提供手动的执行依赖收集函数，这是不方便的，所以需要接着封装。</p>
+<p>封装前先简单聊一下<code>代理模式</code>， 代理简单说就是，我们需要租房，而我们是很难找到房源的，房源都在中介手里，这个中介就是代理，他给我们介绍什么房子，我们就拿到什么房子。</p>
+<p>那我们来一起简单实现下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> activeEffect</span><br><span class="line"></span><br><span class="line"><span class="comment">// ========= start 这里跟刚才一样 ===========</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dep</span> &#123;</span><br><span class="line">    subscribers = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">	</span><br><span class="line">	<span class="title function_">depend</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(activeEffect) &#123;</span><br><span class="line">             <span class="variable language_">this</span>.<span class="property">subscribers</span>.<span class="title function_">add</span>(activeEffect)</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="title function_">notify</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">subscribers</span>.<span class="title function_">forEach</span>(<span class="function"><span class="params">effect</span> =&gt;</span> <span class="title function_">effect</span>())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">watchEffect</span>(<span class="params">effect</span>) &#123;</span><br><span class="line">    activeEffect = effect</span><br><span class="line">    <span class="title function_">effect</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ========= end ===========</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模仿 Vue3 的 reactive</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reactive</span>(<span class="params">raw</span>) &#123;</span><br><span class="line">    <span class="comment">// 遍历对象上存在的 key</span></span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(raw).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 为每个 key 都创建一个依赖对象</span></span><br><span class="line">        <span class="keyword">let</span> dep = <span class="keyword">new</span> <span class="title class_">Dep</span>()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> realValue = raw[key]</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 用 get 和 set 重写原对象的key</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(raw, key, &#123;</span><br><span class="line">            <span class="comment">// 在 get 和 set 里调用依赖对象的对应方法</span></span><br><span class="line">            <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">                dep.<span class="title function_">depend</span>()</span><br><span class="line">                <span class="keyword">return</span> realValue</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">                realValue = newVal</span><br><span class="line">                dep.<span class="title function_">notify</span>()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> raw</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">let</span> obj = <span class="title function_">reactive</span>(&#123; <span class="attr">age</span>: <span class="number">18</span> &#125;)</span><br><span class="line"><span class="keyword">let</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123; <span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">age</span>) &#125;</span><br><span class="line"><span class="title function_">watchEffect</span>(fn)</span><br><span class="line"></span><br><span class="line">obj.<span class="property">age</span> += <span class="number">1</span>  <span class="comment">// 每当修改 age 都会执行 fn 19</span></span><br><span class="line"></span><br><span class="line">obj.<span class="property">age</span> += <span class="number">1</span>  <span class="comment">// 每当修改 age 都会执行 fn 20</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>Object.defineProperty</code>就是做的<code>代理模式</code> ，现在在使用方式上基本和 Vue3 一样了。</p>
+<p>但还不是最终版本，vue3已经放弃了 <code>IE</code>， 并且<code>Object.defineProperty    </code> 在监听对象时，新增的数据是监听不到的。</p>
+<p>所以使用了 <code>Proxy</code> 来做代理。</p>
+<h3 id="Proxy版"><a href="#Proxy版" class="headerlink" title="Proxy版"></a>Proxy版</h3><p>使用了发布订阅+代理模式实现基本的<code>reactivity</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个暂时存放 watchEffect 传进来的参数的变量</span></span><br><span class="line"><span class="keyword">let</span> activeEffect</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个Dep应该是Dependence的缩写，意为依赖。实际上就相当于发布-订阅模式中的发布者类</span></span><br><span class="line"><span class="comment">// 定义一个 Dep 类，该类将会为每一个响应式对象的每一个键生成一个发布者实例</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dep</span> &#123;</span><br><span class="line">  <span class="comment">// 用 Set 做缓存列表以防止列表中添加多个完全相同的函数</span></span><br><span class="line">  subscribers = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 构造函数接受一个初始化的值放在私有变量内</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_value</span> = value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当使用 xxx.value 获取对象上的 value 值时</span></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">value</span>() &#123;</span><br><span class="line">    <span class="comment">// 代理模式 当获取对象上的value属性的值时将会触发 depend 方法</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">depend</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 然后返回私有变量内的值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_value</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当使用 xxx.value = xxx 修改对象上的 value 值时</span></span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">value</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="comment">// 代理模式 当修改对象上的value属性的值时将会触发 notify 方法</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_value</span> = value</span><br><span class="line">    <span class="comment">// 先改值再触发 这样保证触发的时候用到的都是已经修改后的新值</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">notify</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这就是我们常说的依赖收集方法</span></span><br><span class="line">  <span class="title function_">depend</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 如果 activeEffect 这个变量为空 就证明不是在 watchEffect 这个函数里面触发的 get 操作</span></span><br><span class="line">    <span class="keyword">if</span> (activeEffect) &#123;</span><br><span class="line">      <span class="comment">// 但如果 activeEffect 不为空就证明是在 watchEffect 里触发的 get 操作</span></span><br><span class="line">      <span class="comment">// 那就把 activeEffect 这个存着 watchEffect 参数的变量添加进缓存列表中</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">subscribers</span>.<span class="title function_">add</span>(activeEffect)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新操作 通常会在值被修改后调用</span></span><br><span class="line">  <span class="title function_">notify</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 遍历缓存列表里存放的函数 并依次触发执行</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">subscribers</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">effect</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">effect</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 模仿 Vue3 的 watchEffect 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">watchEffect</span>(<span class="params">effect</span>) &#123;</span><br><span class="line">  <span class="comment">// 先把传进来的函数放入到 activeEffect 这个变量中</span></span><br><span class="line">  activeEffect = effect</span><br><span class="line">  <span class="comment">// 然后执行 watchEffect 里面的函数</span></span><br><span class="line">  <span class="title function_">effect</span>()</span><br><span class="line">  activeEffect = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个 WeakMap 数据类型 用于存放 reactive 定义的对象以及他们的发布者对象集</span></span><br><span class="line"><span class="keyword">const</span> targetToHashMap = <span class="keyword">new</span> <span class="title class_">WeakMap</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 getDep 函数 用于获取 reactive 定义的对象所对应的发布者对象集里的某一个键对应的发布者对象</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getDep</span>(<span class="params">target, key</span>) &#123;</span><br><span class="line">  <span class="comment">// 获取 reactive 定义的对象所对应的发布者对象集</span></span><br><span class="line">  <span class="keyword">let</span> depMap = targetToHashMap.<span class="title function_">get</span>(target)</span><br><span class="line">  <span class="comment">// 如果没获取到的话</span></span><br><span class="line">  <span class="keyword">if</span> (!depMap) &#123;</span><br><span class="line">    <span class="comment">// 就新建一个空的发布者对象集</span></span><br><span class="line">    depMap = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">    <span class="comment">// 然后再把这个发布者对象集存进 WeakMap 里</span></span><br><span class="line">    targetToHashMap.<span class="title function_">set</span>(target, depMap)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 再获取到这个发布者对象集里的某一个键所对应的发布者对象</span></span><br><span class="line">  <span class="keyword">let</span> dep = depMap.<span class="title function_">get</span>(key)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果没获取到的话</span></span><br><span class="line">  <span class="keyword">if</span> (!dep) &#123;</span><br><span class="line">    <span class="comment">// 就新建一个发布者对象并初始化赋值</span></span><br><span class="line">    dep = <span class="keyword">new</span> <span class="title class_">Dep</span>(target[key])</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 然后将这个发布者对象放入到发布者对象集里</span></span><br><span class="line">    depMap.<span class="title function_">set</span>(key, dep)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 最后返回这个发布者对象</span></span><br><span class="line">  <span class="keyword">return</span> dep</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模仿 Vue3 的 reactive 函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reactive</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="comment">// 返回一个传进来的参数对象的代理对象 以便使用代理模式拦截对象上的操作并应用发布-订阅模式</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="comment">// 当触发 get 操作时</span></span><br><span class="line">    <span class="title function_">get</span>(<span class="params">target, key</span>) &#123;</span><br><span class="line">      <span class="comment">// 先调用 getDep 函数取到里面存放的 value 值</span></span><br><span class="line">      <span class="keyword">const</span> value = <span class="title function_">getDep</span>(target, key).<span class="property">value</span></span><br><span class="line">      <span class="comment">// 如果 value 是对象的话</span></span><br><span class="line">      <span class="keyword">if</span> (value &amp;&amp; <span class="keyword">typeof</span> value === <span class="string">&#x27;object&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">// 那就把 value 也变成一个响应式对象</span></span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">reactive</span>(value)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果 value 只是基本数据类型的话就直接将值返回</span></span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 当触发 set 操作时</span></span><br><span class="line">    <span class="title function_">set</span>(<span class="params">target, key, value</span>) &#123;</span><br><span class="line">      <span class="comment">// 调用 getDep 函数并将里面存放的 value 值重新赋值成 set 操作的值</span></span><br><span class="line">      <span class="title function_">getDep</span>(target, key).<span class="property">value</span> = value</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">age</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj.<span class="property">age</span>++</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+        
+    </section>
+</article>
+
+
+
+
+            </div>
+        </div>
+
+        
+            
+            <a id="pagenext" href="/2023/03/17/JS/03-%E6%89%8B%E5%86%99%E7%80%91%E5%B8%83%E6%B5%81/" class="article-next" title="手写瀑布流"><i class="icon-arrow-right"></i></a>
+            
+            
+            <a id="pageprev" href="/2023/03/17/JS/11-%E6%89%8B%E5%86%99%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-prev" title="手写数组的常用方法"><i class="icon-arrow-left"></i></a>
+            
+        
+
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+
+    
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        
+<script src="/js/scrollspy.min.js"></script>
+
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
