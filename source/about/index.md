@@ -30,4 +30,4 @@ Gihtub: [https://github.com/Wanghongde](https://github.com/Wanghongde "https://g
 
 - 讲原则，有自制力，热爱前端 
 - 有良好的沟通合作能力，善于沟通
-- 热爱生活，兴趣爱好广泛打球、喝茶、钓鱼、唱歌
+- 热爱生活，兴趣爱好广泛打球、喝茶、盘串、钓鱼、唱歌
