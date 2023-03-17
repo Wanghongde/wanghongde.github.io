@@ -116,7 +116,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2023/03/13/JS/11-%E6%89%8B%E5%86%99%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">手写数组的常用方法</a>
+            <a href="/2023/03/17/Vue/02-%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/">Vue的虚拟列表</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -124,13 +124,13 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2023-03-13T15:21:15.378Z" itemprop="datePublished">2023-03-13</time>
+    <time class="vm" datetime="2023-03-17T13:09:00.237Z" itemprop="datePublished">2023-03-17</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
 </div>
 
 
@@ -139,50 +139,12 @@
     
     <section class="article-body markdown-body">
         
-        <p>reduce</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/12/CSS/04-%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92/">重绘重排</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-12T15:34:16.707Z" itemprop="datePublished">2023-03-12</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/CSS/" rel="tag">CSS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>浏览器打开页面，在页面生成的时候，至少需要一次初始化渲染,也就是至少发生一次<code>重绘</code>和<code>重排</code>，用户访问页面的过程中还会不断的触发<code>重绘</code>和<code>重排</code>。</p>
-<p>不管是发生了<code>重绘</code>还是<code>重排</code>,都会影响性能，最可怕的是<code>重排</code>，它会让部分甚至整个渲染树重新分析，让元素的尺寸计算，重新排列元素。</p>
-<p><code>重绘</code>的代价要小一些，表现为元素的外观被改变，比如文字颜色，背景颜色等。</p>
-<blockquote>
-<p>重排一定会导致重绘，重绘不一定出现重排</p>
-</blockquote>
+        <p>我们在渲染移动端页面时，有时会遇到特别多的数据，渲染这种列表就叫<code>长列表</code></p>
+<p><code>长列表</code>如果直接渲染到页面， 当列表项数过多并且列表项结构复杂的时候 ，会造正页面有大量的DOM需要处理，非常容易造成卡顿甚至卡死。</p>
+<p>常见的一种解决方式就是<code>虚拟列表</code>，那我们就来一起写一个简单的<code>虚拟列表</code>吧。</p>
         
         <p class="article-more-link">
-            <a href="/2023/03/12/CSS/04-%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92/#more">
+            <a href="/2023/03/17/Vue/02-%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -198,7 +160,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2023/03/12/JS/10-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/">浅拷贝和深拷贝</a>
+            <a href="/2023/03/17/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/">互联网是如何运作</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -206,13 +168,13 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2023-03-12T15:09:22.204Z" itemprop="datePublished">2023-03-12</time>
+    <time class="vm" datetime="2023-03-17T13:09:00.237Z" itemprop="datePublished">2023-03-17</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
 </div>
 
 
@@ -221,47 +183,10 @@
     
     <section class="article-body markdown-body">
         
-        <p>我们</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/12/JS/09-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/">防抖和节流</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-12T15:09:02.723Z" itemprop="datePublished">2023-03-12</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>函数<code>防抖</code>和<code>节流</code>是我们优化高频率代码的一种手段，比如浏览器的 <code>resize</code>、<code>scroll</code> 、<code>mousemove</code>等事件在触发时，会不断的调用绑定到事件上的回调函数，极大的浪费了资源，降低前端性能。</p>
-<p><code>防抖</code> 就是 n 秒后再执行该事件，若 n 秒内被重复触发，则重新计时。</p>
-<p><code>节流</code> 则是  n 秒内只运行一次，若在 n秒内重复触发，则只有一次生效。</p>
+        <h3 id="客户端和服务端通信"><a href="#客户端和服务端通信" class="headerlink" title="客户端和服务端通信"></a>客户端和服务端通信</h3><p>电脑连入互联网，电脑就会获得一个IP(internet  protocol address)地址。<br>服务器接入互联网，也会获得一个IP地址， 我们常说的访问这个网站，其实就是访问这个网站的服务器的IP地址。<br>假如你的电脑想访问服务器，那么这个时候电脑就是客户端，服务器就是服务端， 这种形式也就是客户端服务端模型。</p>
         
         <p class="article-more-link">
-            <a href="/2023/03/12/JS/09-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/#more">
+            <a href="/2023/03/17/%E7%BD%91%E7%BB%9C/01-%E4%BA%92%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -277,7 +202,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2023/03/12/JS/08-%E6%89%8B%E5%86%99%20new/">手写 new</a>
+            <a href="/2023/03/17/Vue/03-Vue%E5%BC%80%E5%8F%91%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E9%80%82%E9%85%8D/">Vue开发移动端css适配</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -285,7 +210,144 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2023-03-12T15:06:17.102Z" itemprop="datePublished">2023-03-12</time>
+    <time class="vm" datetime="2023-03-17T13:09:00.237Z" itemprop="datePublished">2023-03-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/Vue/" rel="tag">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>相对于 PC端来说，移动端设备在进行css适配时要麻烦一些。</p>
+<p>这时候我们就应该理顺出一套解决方法，适配各种手机。</p>
+<p>之前呢，我们使用<code>rem</code>配合手淘的<code>lib-flexible</code>实现移动端适配。</p>
+<p>现在有了更好的<code>vw</code>和<code>vh</code>单位，再配合弹性布局和<code>grid</code>布局。</p>
+<p><code>vw</code> 视口的最大宽度，<code>1vw</code> = 视口宽度的百分之一</p>
+<p><code>vh</code> 视口的最大高度， <code>1vh</code> = 视口高度的百分之一</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/17/Vue/03-Vue%E5%BC%80%E5%8F%91%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E9%80%82%E9%85%8D/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/17/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/">浏览器是如何运作</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-17T13:09:00.237Z" itemprop="datePublished">2023-03-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>浏览器对于前端开发者，就好比赛车之于赛车手，我们只有足够了解浏览器，我们才能写出更好的代码、更好的用户体验。<br>大致可以将浏览器分为： </p>
+<ol>
+<li>用户界面：除标签页窗口之外的内容</li>
+<li>浏览器引擎：用于用户界面和渲染引擎之间传递数据<br>2.1 数据持久层：帮助浏览器存储数据比如cookie等等</li>
+<li>渲染引擎：渲染用户请求的页面内容<br>3.1  网络：负责发起请求<br>3.2  js解释器：负责js解析和执行
+        
+        <p class="article-more-link">
+            <a href="/2023/03/17/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/17/%E7%BD%91%E7%BB%9C/03-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">前端性能优化</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-17T13:09:00.237Z" itemprop="datePublished">2023-03-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>性能优化是一个特别大的话题，我这里也只是简单说下我的理解</p>
+<p>与其说性能优化，不如换一个简单的话<code>访问的网站快准狠的呈现到用户面前</code></p>
+<p>我们这里聊的性能优化，其实只是总结梳理一些常见的方式，面对真实的项目肯定不能一点一点去尝试，比较通用的方案是全链路埋点，通过数据查看哪块慢了，通过数据去量化性能优化，当然我们这里就不去最小的粒度化去分析，因为那最少需要几万字来梳理了。</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/03/17/%E7%BD%91%E7%BB%9C/03-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2023/03/17/JS/08-%E6%89%8B%E5%86%99%20new/">手写 new</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-03-17T13:09:00.236Z" itemprop="datePublished">2023-03-17</time>
 </a>
 
             
@@ -312,58 +374,7 @@
 </ol>
         
         <p class="article-more-link">
-            <a href="/2023/03/12/JS/08-%E6%89%8B%E5%86%99%20new/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/12/JS/07-%E6%89%8B%E5%86%99%20call&bind&apply/">手写 call&amp;bind&amp;apply</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-12T15:05:32.428Z" itemprop="datePublished">2023-03-12</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>在 JS 中提到修改 <code>this</code>指向，首先想到的就是 <code>bind</code>、<code>call</code>、<code>apply</code>。</p>
-<p>面试也经常会问到三个的区别，那我们就一起来边使用边手动书写一下吧。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">address</span>: <span class="string">&#x27;石家庄&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> address = <span class="string">&#x27;北京&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="keyword">function</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">address</span>, num1, num2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 北京 1 2</span></span><br><span class="line">fn.<span class="title function_">call</span>(obj, <span class="number">11</span>, <span class="number">22</span>) <span class="comment">// 石家庄 11 22</span></span><br></pre></td></tr></table></figure>
-
-<p>通过上边案例我们可以发现call做了这几件事</p>
-<ol>
-<li>修改了 <code>fn</code> 的 <code>this</code>指向</li>
-<li>传递了参数</li>
-<li>调用了<code>fn</code>函数</li>
-</ol>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/12/JS/07-%E6%89%8B%E5%86%99%20call&bind&apply/#more">
+            <a href="/2023/03/17/JS/08-%E6%89%8B%E5%86%99%20new/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
