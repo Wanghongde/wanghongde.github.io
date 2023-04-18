@@ -116,6 +116,48 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/04/18/JS/12-%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">压缩图片</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-04-18T03:30:08.996Z" itemprop="datePublished">2023-04-18</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>压缩图片</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/04/18/JS/12-%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/03/17/Vue/03-Vue%E5%BC%80%E5%8F%91%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E9%80%82%E9%85%8D/">Vue开发移动端css适配</a>
         </h1>
         
@@ -324,57 +366,6 @@
         
         <p class="article-more-link">
             <a href="/2023/03/17/%E7%BD%91%E7%BB%9C/02-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/03/17/JS/08-%E6%89%8B%E5%86%99%20new/">手写 new</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://example.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-03-17T13:09:00.236Z" itemprop="datePublished">2023-03-17</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/JS/" rel="tag">JS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>我们先写一段构造函数创建实例的代码感受下<code>new</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">uname, address</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">uname</span> = uname</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">address</span> = address</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`你好, 我是<span class="subst">$&#123;<span class="variable language_">this</span>.uname&#125;</span>, 我来自<span class="subst">$&#123;<span class="variable language_">this</span>.address&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;石家庄&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">address</span>)  <span class="comment">// 石家庄</span></span><br><span class="line">p.<span class="title function_">sayHi</span>()  <span class="comment">// 你好, 我是张三, 我来自石家庄</span></span><br></pre></td></tr></table></figure>
-
-<p>通过打印和分析，我们可以知道<code>new</code>做了这几件事</p>
-<ol>
-<li>创建了新对象</li>
-<li>将 <code>Person</code>的属性添加到新对象上</li>
-<li>继承<code>Person</code>原型对象上的方法</li>
-<li>返回新对象</li>
-</ol>
-        
-        <p class="article-more-link">
-            <a href="/2023/03/17/JS/08-%E6%89%8B%E5%86%99%20new/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
